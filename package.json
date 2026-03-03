@@ -1,0 +1,29 @@
+{
+  "name": "ai_server",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Rhim Angelo Sagales",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "watch:css": "npx @tailwindcss/cli -i ./src/css/input/input.css -o ./src/css/output/output.css --watch"
+  },
+  "dependencies": {
+    "@lancedb/lancedb": "^0.26.2",
+    "@tailwindcss/cli": "^4.1.18",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "multer": "^2.0.2",
+    "nodemon": "^3.1.11",
+    "ollama": "^0.6.3",
+    "pdf-parse": "^2.4.5",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "daisyui": "^5.5.18"
+  }
+}

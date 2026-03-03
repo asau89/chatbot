@@ -1,0 +1,87 @@
+:root {
+    --ch-width: 250px;
+}
+
+.inter {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.shrikhand-regular {
+    font-family: "Shrikhand", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+/* body {
+    display: grid;
+    grid-template-columns: var(--ch-width) 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'chatHistory mainContent';
+}
+
+.chat-history {
+    grid-area: chatHistory;
+
+}
+
+.main-content {
+    grid-area: mainContent;
+} */
+
+
+
+/* .ai-response table {
+    width: 100%;
+    margin: 1rem 0;
+    border-collapse: separate; 
+    border-spacing: 0;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    overflow: hidden; 
+}
+
+.ai-response th {
+    background-color: rgba(255, 255, 255, 0.15);
+    font-weight: 600;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ai-response td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+.ai-response tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+
+.ai-response tr:last-child td {
+    border-bottom: none;
+}
+
+
+.ai-response pre {
+    background: #0d0d0d; 
+    color: #ececec;
+    padding: 16px;
+    border-radius: 8px;
+    margin: 1rem 0;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    position: relative;
+}
+
+
+.ai-response br, .ai-response hr {
+    margin-block: 12px;
+} */
