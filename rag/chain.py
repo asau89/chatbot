@@ -78,7 +78,7 @@ PLAIN_HUMAN_TEMPLATE = "{question}"
 # ---------------------------------------------------------------------------
 
 def _get_llm(model: str = CHAT_MODEL) -> ChatOllama:
-    return ChatOllama(model=model, base_url=OLLAMA_BASE_URL)
+    return ChatOllama(model=model, base_url=OLLAMA_BASE_URL, reasoning=False)
 
 
 # ---------------------------------------------------------------------------

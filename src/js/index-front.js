@@ -1,25 +1,25 @@
 // ─── DOM references ─────────────────────────────────────────────────────
 const frontEndElem = {
-    burgerCloseBtn:  document.querySelector('.burger-close-btn'),
-    burgerSvg:       document.querySelector('.burger-close-btn svg:nth-child(1)'),
-    closeSvg:        document.querySelector('.burger-close-btn svg:nth-child(2)'),
-    chMenuModal:     document.getElementById('ch-menu-modal'),
+    burgerCloseBtn: document.querySelector('.burger-close-btn'),
+    burgerSvg: document.querySelector('.burger-close-btn svg:nth-child(1)'),
+    closeSvg: document.querySelector('.burger-close-btn svg:nth-child(2)'),
+    chMenuModal: document.getElementById('ch-menu-modal'),
     sendQuestionBtn: document.querySelector('.send-question-btn'),
     questionTextarea: document.querySelector('.question-textarea'),
-    tagsChoices:     document.querySelectorAll('.tags-choices'),
-    chatBoxMain:     document.querySelector('.chat-box-main'),
-    chatBubble:      document.querySelectorAll('.chat'),
+    tagsChoices: document.querySelectorAll('.tags-choices'),
+    chatBoxMain: document.querySelector('.chat-box-main'),
+    chatBubble: document.querySelectorAll('.chat'),
     chatLoadingAnimation: document.querySelector('.chat-loading-animation'),
     uploadKnowledgeBaseBtn: document.querySelector('#upload-knowledge-btn'),
     uploadKnowledgeBaseFileInput: document.getElementById('dropzone-file'),
     uploadKnowledgeBaseFileNameDisplay: document.getElementById('file-name'),
-    viewDbRowsBtn:   document.getElementById('view-db-rows-btn'),
-    truncateDbBtn:   document.getElementById('truncate-db-btn'),
-    welcomeHero:     document.getElementById('welcome-hero'),
-    toastContainer:  document.getElementById('toast-container'),
-    sendLabel:       document.querySelector('.send-label'),
-    sendIcon:        document.querySelector('.send-icon'),
-    dropArea:        document.getElementById('drop-area'),
+    viewDbRowsBtn: document.getElementById('view-db-rows-btn'),
+    truncateDbBtn: document.getElementById('truncate-db-btn'),
+    welcomeHero: document.getElementById('welcome-hero'),
+    toastContainer: document.getElementById('toast-container'),
+    sendLabel: document.querySelector('.send-label'),
+    sendIcon: document.querySelector('.send-icon'),
+    dropArea: document.getElementById('drop-area'),
 };
 
 // ─── Conversation history tracker ───────────────────────────────────────
@@ -102,13 +102,13 @@ function renderDebugDetails(result) {
     const selectedChunks = Array.isArray(result?.selectedChunks) ? result.selectedChunks : [];
 
     const timeLabels = {
-        retrievalMs:  'Total retrieval',
+        retrievalMs: 'Total retrieval',
         corpusLoadMs: '  Corpus load',
-        bm25Ms:       '  BM25 search',
-        vectorMs:     '  Vector search',
-        rrfMs:        '  RRF fusion',
+        bm25Ms: '  BM25 search',
+        vectorMs: '  Vector search',
+        rrfMs: '  RRF fusion',
         generationMs: 'LLM generation',
-        totalMs:      'Total request',
+        totalMs: 'Total request',
     };
     const countKeys = new Set(['corpusSize', 'bm25Hits', 'vectorHits', 'finalChunks', 'contextChars']);
 
@@ -125,10 +125,10 @@ function renderDebugDetails(result) {
     const chunkItems = selectedChunks
         .map(chunk => {
             const previewText = (chunk.text || '').slice(0, 220);
-            const rrfScore   = chunk.rrfScore   != null ? chunk.rrfScore   : '\u2014';
-            const bm25Rrf    = chunk.bm25Rrf    != null ? chunk.bm25Rrf    : '\u2014';
-            const vectorRrf  = chunk.vectorRrf  != null ? chunk.vectorRrf  : '\u2014';
-            const vecDist    = chunk.vectorDistance != null ? chunk.vectorDistance : '\u2014';
+            const rrfScore = chunk.rrfScore != null ? chunk.rrfScore : '\u2014';
+            const bm25Rrf = chunk.bm25Rrf != null ? chunk.bm25Rrf : '\u2014';
+            const vectorRrf = chunk.vectorRrf != null ? chunk.vectorRrf : '\u2014';
+            const vecDist = chunk.vectorDistance != null ? chunk.vectorDistance : '\u2014';
             return `
                 <li>
                     <strong>#${escapeHtml(chunk.rank)}</strong>
