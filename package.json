@@ -1,30 +1,17 @@
 {
-  "name": "ai_server",
+  "name": "mola-chatbot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Mola Chatbot — frontend tooling",
   "license": "ISC",
   "author": "Rhim Angelo Sagales",
-  "type": "commonjs",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js",
-    "watch:css": "npx @tailwindcss/cli -i ./src/css/input/input.css -o ./src/css/output/output.css --watch"
-  },
-  "dependencies": {
-    "@lancedb/lancedb": "^0.26.2",
-    "@tailwindcss/cli": "^4.1.18",
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "express-rate-limit": "^8.2.1",
-    "langchain": "^1.2.28",
-    "multer": "^2.1.0",
-    "nodemon": "^3.1.11",
-    "ollama": "^0.6.3",
-    "pdf-parse": "^1.1.1",
-    "tailwindcss": "^4.1.18"
+    "watch:css": "npx @tailwindcss/cli -i ./src/css/input/input.css -o ./src/css/output/output.css --watch",
+    "build:css": "npx @tailwindcss/cli -i ./src/css/input/input.css -o ./src/css/output/output.css --minify"
   },
   "devDependencies": {
-    "daisyui": "^5.5.18"
+    "@tailwindcss/cli": "^4.1.18",
+    "daisyui": "^5.5.18",
+    "tailwindcss": "^4.1.18"
   }
 }

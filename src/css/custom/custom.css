@@ -14,74 +14,167 @@
     font-style: normal;
 }
 
-
-/* body {
-    display: grid;
-    grid-template-columns: var(--ch-width) 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: 'chatHistory mainContent';
+/* ───── Smooth scrolling ───── */
+.chat-box-main {
+    scroll-behavior: smooth;
 }
 
-.chat-history {
-    grid-area: chatHistory;
-
+/* ───── Fix word breaking (no mid-word splits) ───── */
+.ai-response,
+.chat-bubble {
+    overflow-wrap: break-word;
+    word-break: normal;
 }
 
-.main-content {
-    grid-area: mainContent;
-} */
-
-
-
-/* .ai-response table {
-    width: 100%;
-    margin: 1rem 0;
-    border-collapse: separate; 
-    border-spacing: 0;
-    font-size: 0.9rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    overflow: hidden; 
+/* ───── Fade-in for new messages ───── */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.msg-enter {
+    animation: fadeInUp 0.3s ease-out both;
 }
 
-.ai-response th {
-    background-color: rgba(255, 255, 255, 0.15);
-    font-weight: 600;
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+/* ───── Typing dots indicator ───── */
+@keyframes typingBounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30%           { transform: translateY(-6px); }
 }
-
-.ai-response td {
-    padding: 10px 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.9);
+.typing-dots span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.6;
+    animation: typingBounce 1.2s ease-in-out infinite;
 }
+.typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.3s; }
 
-
-.ai-response tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.03);
+/* ───── Toast notifications ───── */
+.toast-container {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+    pointer-events: none;
 }
-
-
-.ai-response tr:last-child td {
-    border-bottom: none;
+.toast-msg {
+    pointer-events: auto;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    animation: toastIn 0.3s ease-out, toastOut 0.3s ease-in 2.7s forwards;
+    max-width: 420px;
+    text-align: center;
 }
+.toast-msg.success { background: oklch(55% 0.18 150); }
+.toast-msg.error   { background: oklch(55% 0.2 25); }
+.toast-msg.info    { background: oklch(50% 0.15 250); }
+@keyframes toastIn  { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes toastOut { from { opacity: 1; } to { opacity: 0; transform: translateY(-8px); } }
 
-
-.ai-response pre {
-    background: #0d0d0d; 
-    color: #ececec;
-    padding: 16px;
-    border-radius: 8px;
-    margin: 1rem 0;
-    font-family: 'Fira Code', 'Courier New', monospace;
-    font-size: 0.85rem;
-    line-height: 1.5;
+/* ───── Copy button on AI responses ───── */
+.ai-response {
     position: relative;
 }
+.copy-response-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.3rem 0.55rem;
+    border-radius: 0.5rem;
+    border: none;
+    background: oklch(30% 0 0 / 60%);
+    color: oklch(90% 0 0);
+    font-size: 0.75rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    z-index: 2;
+}
+.ai-response:hover .copy-response-btn {
+    opacity: 1;
+}
+.copy-response-btn:hover {
+    background: oklch(40% 0 0 / 80%);
+}
 
+/* ───── Auto-resize textarea ───── */
+.question-textarea {
+    resize: none;
+    overflow-y: auto;
+    transition: height 0.15s ease;
+}
 
-.ai-response br, .ai-response hr {
-    margin-block: 12px;
-} */
+/* ───── Suggestion chips ───── */
+.suggestion-chip {
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.suggestion-chip:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* ───── Drag-over highlight on dropzone ───── */
+.drop-area-active {
+    border-color: oklch(65% 0.2 46) !important;
+    background: oklch(65% 0.2 46 / 8%) !important;
+}
+
+/* ───── Spinner for buttons ───── */
+@keyframes btnSpin {
+    to { transform: rotate(360deg); }
+}
+.btn-spinner {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: btnSpin 0.6s linear infinite;
+    vertical-align: middle;
+    margin-right: 0.35em;
+}
+
+/* ───── Welcome hero ───── */
+.welcome-hero {
+    text-align: center;
+    padding: 2rem 1rem;
+    opacity: 0.85;
+}
+.welcome-hero h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+.welcome-hero p {
+    font-size: 0.9rem;
+    opacity: 0.6;
+    margin-bottom: 1.25rem;
+}
+
+/* ───── Keyboard hint ───── */
+.keyboard-hint {
+    font-size: 0.7rem;
+    opacity: 0.4;
+    user-select: none;
+}
+kbd {
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.25rem;
+    background: oklch(30% 0 0 / 25%);
+    font-family: inherit;
+    font-size: 0.7rem;
+}

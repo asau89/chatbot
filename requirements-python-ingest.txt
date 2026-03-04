@@ -1,5 +1,0 @@
-lancedb
-pymupdf
-pytesseract
-pillow
-requests

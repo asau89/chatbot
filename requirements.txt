@@ -1,0 +1,31 @@
+# Core framework
+fastapi
+uvicorn[standard]
+python-multipart
+
+# LangChain
+langchain
+langchain-core
+langchain-ollama
+langchain-text-splitters
+langchain-community
+
+# Vector DB
+lancedb
+
+# Retrieval
+rank_bm25
+
+# PDF extraction
+pymupdf
+
+# DOCX / XLSX support
+python-docx
+openpyxl
+
+# OCR (optional — gracefully degrades if Tesseract is not installed)
+pytesseract
+pillow
+
+# Environment
+python-dotenv

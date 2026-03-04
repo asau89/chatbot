@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="../css/custom/custom.css">
     <link rel="stylesheet" href="../css/output/output.css">
-    <title>Document</title>
+    <title>Mola Chatbot</title>
 </head>
 <body class="w-full h-screen bg-base-300 inter">
     <header class="w-full h-[60px] md:h-[80px] flex items-center justify-between px-2 md:px-6 lg:px-10">
@@ -67,13 +67,20 @@
 
     <main class="w-full h-[calc(100%-60px)] md:h-[calc(100%-80px)] flex flex-col items-center justify-center gap-2 py-4 ">
         <div class="chat-box-main w-full min-h-0 overflow-auto ease-in-out duration-1000 relative px-1 sm:px-16 md:px-36 lg:px-56 xl:px-72">
-            <div class="chat-loading-animation hidden w-full h-auto px-4 py-6  flex flex-col gap-1">
-                <span class="text-base-content/60">Mola is thinking please wait...</span>
-                <div>
-                    <span class="loading loading-ring loading-sm"></span>
-                    <span class="loading loading-ring loading-xl"></span>
-                    <span class="loading loading-ring loading-sm"></span>
-                    <span class="loading loading-ring loading-xl"></span>
+            <div id="welcome-hero" class="welcome-hero w-full flex flex-col items-center justify-center py-10">
+                <h2 class="text-base-content">Hi, how can I help you today?</h2>
+                <p class="text-base-content">Ask anything about your uploaded documents.</p>
+                <div class="flex flex-wrap items-center justify-center gap-2 mt-2" id="suggestion-chips">
+                    <button class="suggestion-chip btn btn-sm btn-soft btn-primary rounded-full">Summarize the document</button>
+                    <button class="suggestion-chip btn btn-sm btn-soft btn-primary rounded-full">What are the key points?</button>
+                    <button class="suggestion-chip btn btn-sm btn-soft btn-primary rounded-full">List all names mentioned</button>
+                </div>
+            </div>
+            <div class="chat-loading-animation hidden w-full h-auto px-4 py-6 flex flex-col gap-1">
+                <div class="flex items-center gap-2">
+                    <span class="typing-dots text-primary"><span></span><span></span><span></span></span>
+                    <span class="text-base-content/60 text-sm">Mola is thinking</span>
+                    <span class="thinking-timer text-base-content/40 text-xs"></span>
                 </div>
             </div>   
         </div>
@@ -104,10 +111,11 @@
                     <div class="w-auto flex items-center justify-start text-xs text-info font-semibold">
                         <span class="text-lg">🛈&nbsp;</span> Mola can make mistakes. Check important info.
                     </div>
-                    <div class="w-auto send-container flex- items-center justify-end">
+                    <div class="w-auto send-container flex items-center justify-end gap-3">
+                        <span class="keyboard-hint hidden sm:inline"><kbd>Enter</kbd> send · <kbd>Shift+Enter</kbd> new line</span>
                         <button class="send-question-btn btn btn-md btn-primary rounded-4xl text-sm flex items-center justify-center gap-1 cursor-not-allowed" disabled>
-                            Send
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 rotate-340">
+                            <span class="send-label">Send</span>
+                            <svg class="send-icon size-5 rotate-340" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                 <path
                                     d="M3.105 2.288a.75.75 0 0 0-.826.95l1.414 4.926A1.5 1.5 0 0 0 5.135 9.25h6.115a.75.75 0 0 1 0 1.5H5.135a1.5 1.5 0 0 0-1.442 1.086l-1.414 4.926a.75.75 0 0 0 .826.95 28.897 28.897 0 0 0 15.293-7.155.75.75 0 0 0 0-1.114A28.897 28.897 0 0 0 3.105 2.288Z" />
                             </svg>
@@ -154,10 +162,10 @@
                                 <p class="mb-2 text-sm text-base-content">
                                     <span class="font-bold">Click to upload</span>
                                 </p>
-                                <p class="text-xs text-base-content opacity-60">PDF only.</p>
+                                <p class="text-xs text-base-content opacity-60">PDF, DOCX, XLSX, TXT, MD, CSV</p>
                             </div>
                     
-                            <input id="dropzone-file" accept="application/pdf" type="file" class="hidden" />
+                            <input id="dropzone-file" accept=".pdf,.docx,.xlsx,.xls,.txt,.md,.csv" type="file" class="hidden" />
                     
                             <div id="file-name" class="mt-2 badge badge-primary hidden"></div>
                         </label>
@@ -218,6 +226,7 @@
         <div>Label C <button class="btn btn-lg btn-circle">C</button></div> -->
     </div>
 
+    <div class="toast-container" id="toast-container"></div>
     <script src="../js/index-front.js"></script>
 </body>
 </html>
